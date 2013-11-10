@@ -22,3 +22,27 @@ ExternalProject_Add(
         -DCMAKE_INSTALL_PREFIX=<INSTALL_DIR>
         -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE}
 )
+if("${CMAKE_BUILD_TYPE}" STREQUAL Debug)
+    set(CONFIG Debug)
+else()
+    set(CONFIG Release)
+endif()
+message(STATUS "${CMAKE_CONFIGURATION_TYPES}")
+ExternalProject_Add(
+    Protobuf
+    PREFIX protobuf
+    URL https://protobuf.googlecode.com/files/protobuf-2.5.0.tar.bz2
+    URL_HASH SHA1=62c10dcdac4b69cc8c6bb19f73db40c264cb2726
+    BUILD_IN_SOURCE 1
+
+    CONFIGURE_COMMAND cmake -E copy "${CMAKE_SOURCE_DIR}/protoc.vcproj" vsprojects/protoc.vcproj
+    COMMAND vcupgrade "vsprojects\\libprotobuf.vcproj"
+    COMMAND vcupgrade "vsprojects\\libprotoc.vcproj"
+    COMMAND vcupgrade "vsprojects\\protoc.vcproj"
+
+    BUILD_COMMAND cd vsprojects && msbuild libprotobuf.vcxproj /p:Configuration=${CONFIG}
+    COMMAND cd vsprojects && msbuild libprotoc.vcxproj /p:Configuration=${CONFIG}
+    COMMAND cd vsprojects && msbuild protoc.vcxproj /p:Configuration=${CONFIG}
+
+    INSTALL_COMMAND cd vsprojects && call extract_includes.bat
+)

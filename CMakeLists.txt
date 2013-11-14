@@ -36,13 +36,13 @@ ExternalProject_Add(
     BUILD_IN_SOURCE 1
 
     CONFIGURE_COMMAND cmake -E copy "${CMAKE_SOURCE_DIR}/protoc.vcproj" vsprojects/protoc.vcproj
-    COMMAND vcupgrade "vsprojects\\libprotobuf.vcproj"
-    COMMAND vcupgrade "vsprojects\\libprotoc.vcproj"
-    COMMAND vcupgrade "vsprojects\\protoc.vcproj"
+              COMMAND vcupgrade "vsprojects\\libprotobuf.vcproj"
+              COMMAND vcupgrade "vsprojects\\libprotoc.vcproj"
+              COMMAND vcupgrade "vsprojects\\protoc.vcproj"
 
     BUILD_COMMAND cd vsprojects && msbuild libprotobuf.vcxproj /p:Configuration=${CONFIG}
-    COMMAND cd vsprojects && msbuild libprotoc.vcxproj /p:Configuration=${CONFIG}
-    COMMAND cd vsprojects && msbuild protoc.vcxproj /p:Configuration=${CONFIG}
+          COMMAND cd vsprojects && msbuild libprotoc.vcxproj /p:Configuration=${CONFIG}
+          COMMAND cd vsprojects && msbuild protoc.vcxproj /p:Configuration=${CONFIG}
 
     INSTALL_COMMAND cd vsprojects && call extract_includes.bat
 )

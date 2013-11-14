@@ -20,6 +20,8 @@ ExternalProject_Add(
     BUILD_COMMAND mt -nologo -manifest "${CMAKE_SOURCE_DIR}\\patch.exe.manifest" -outputresource:bin\\patch.exe
     INSTALL_COMMAND cmake -E copy <SOURCE_DIR>/bin/patch.exe <INSTALL_DIR>/
 )
+ExternalProject_Get_Property(patch INSTALL_DIR)
+set(PATCH_PROGRAM "${INSTALL_DIR}/patch")
 
 # Chipmunk library
 
@@ -58,6 +60,7 @@ ExternalProject_Add(
     URL_HASH SHA1=62c10dcdac4b69cc8c6bb19f73db40c264cb2726
     BUILD_IN_SOURCE 1
 
+    PATCH_COMMAND ${PATCH_PROGRAM} -p1 < ${CMAKE_SOURCE_DIR}/protobuf-include-algorithm.patch
     CONFIGURE_COMMAND cmake -E copy "${CMAKE_SOURCE_DIR}/protoc.vcproj" vsprojects/protoc.vcproj
               COMMAND vcupgrade "vsprojects\\libprotobuf.vcproj"
               COMMAND vcupgrade "vsprojects\\libprotoc.vcproj"
@@ -69,6 +72,8 @@ ExternalProject_Add(
 
     INSTALL_COMMAND cd vsprojects && call extract_includes.bat
 )
+
+add_dependencies(Protobuf patch)
 
 # Custom target to clean built files but not downloaded tarballs
 # (still imperfect)

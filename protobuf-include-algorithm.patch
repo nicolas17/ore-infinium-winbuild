@@ -1,0 +1,18 @@
+Include <algorithm> to get min and max functions.
+
+This is needed since MSVC2013. Well, I guess the standard says
+it's always needed, but it worked fine in older MSVC versions...
+
+diff --git a/src/google/protobuf/stubs/common.h b/src/google/protobuf/stubs/common.h
+index f287ddf..9af5586 100644
+--- a/src/google/protobuf/stubs/common.h
++++ b/src/google/protobuf/stubs/common.h
+@@ -48,6 +48,8 @@
+ #include <stdint.h>
+ #endif
+ 
++#include <algorithm>
++
+ #ifndef PROTOBUF_USE_EXCEPTIONS
+ #if defined(_MSC_VER) && defined(_CPPUNWIND)
+   #define PROTOBUF_USE_EXCEPTIONS 1

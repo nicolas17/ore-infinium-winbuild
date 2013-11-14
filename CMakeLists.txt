@@ -9,6 +9,8 @@ if(NOT "${CMAKE_C_COMPILER_ID}" STREQUAL "MSVC")
     message(FATAL_ERROR "Currently only MSVC is supported here")
 endif()
 
+# 'patch' binary from GNUWin32
+
 ExternalProject_Add(
     patch
     URL http://downloads.sourceforge.net/gnuwin32/patch-2.5.9-7-bin.zip
@@ -19,6 +21,8 @@ ExternalProject_Add(
     INSTALL_COMMAND cmake -E copy <SOURCE_DIR>/bin/patch.exe <INSTALL_DIR>/
 )
 
+# Chipmunk library
+
 ExternalProject_Add(
     Chipmunk
     URL http://chipmunk-physics.net/release/Chipmunk-6.x/Chipmunk-6.2.1.tgz
@@ -28,6 +32,9 @@ ExternalProject_Add(
         -DCMAKE_INSTALL_PREFIX=<INSTALL_DIR>
         -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE}
 )
+
+# yaml-cpp library
+
 ExternalProject_Add(
     yaml-cpp
     URL https://yaml-cpp.googlecode.com/files/yaml-cpp-0.3.0.tar.gz
@@ -36,12 +43,15 @@ ExternalProject_Add(
         -DCMAKE_INSTALL_PREFIX=<INSTALL_DIR>
         -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE}
 )
+
+# Protobuf library and compiler
+
 if("${CMAKE_BUILD_TYPE}" STREQUAL Debug)
     set(CONFIG Debug)
 else()
     set(CONFIG Release)
 endif()
-message(STATUS "${CMAKE_CONFIGURATION_TYPES}")
+
 ExternalProject_Add(
     Protobuf
     URL https://protobuf.googlecode.com/files/protobuf-2.5.0.tar.bz2
@@ -59,6 +69,10 @@ ExternalProject_Add(
 
     INSTALL_COMMAND cd vsprojects && call extract_includes.bat
 )
+
+# Custom target to clean built files but not downloaded tarballs
+# (still imperfect)
+
 add_custom_target(clean_keep_downloads
     COMMAND cmake -E remove_directory externals/Build
     COMMAND cmake -E remove_directory externals/Install

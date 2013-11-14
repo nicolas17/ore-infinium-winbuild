@@ -1,9 +1,14 @@
 cmake_minimum_required(VERSION 2.8)
-project(ore-infinium-deps NONE)
+project(ore-infinium-deps C)
 
 include(ExternalProject)
 
 set_property(DIRECTORY PROPERTY EP_BASE "externals")
+
+if(NOT "${CMAKE_C_COMPILER_ID}" STREQUAL "MSVC")
+    message(FATAL_ERROR "Currently only MSVC is supported here")
+endif()
+
 ExternalProject_Add(
     Chipmunk
     URL http://chipmunk-physics.net/release/Chipmunk-6.x/Chipmunk-6.2.1.tgz

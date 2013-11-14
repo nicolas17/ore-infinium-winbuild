@@ -61,10 +61,10 @@ ExternalProject_Add(
     BUILD_IN_SOURCE 1
 
     PATCH_COMMAND
+        COMMAND ${PATCH_PROGRAM} -p1 < ${CMAKE_SOURCE_DIR}/protobuf-vcproj-link.patch
         COMMAND ${PATCH_PROGRAM} -p1 < ${CMAKE_SOURCE_DIR}/protobuf-include-algorithm.patch
 
     CONFIGURE_COMMAND
-        COMMAND cmake -E copy "${CMAKE_SOURCE_DIR}/protoc.vcproj" vsprojects/protoc.vcproj
         COMMAND vcupgrade "vsprojects\\libprotobuf.vcproj"
         COMMAND vcupgrade "vsprojects\\libprotoc.vcproj"
         COMMAND vcupgrade "vsprojects\\protoc.vcproj"

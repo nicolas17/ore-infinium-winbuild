@@ -10,6 +10,16 @@ if(NOT "${CMAKE_C_COMPILER_ID}" STREQUAL "MSVC")
 endif()
 
 ExternalProject_Add(
+    patch
+    URL http://downloads.sourceforge.net/gnuwin32/patch-2.5.9-7-bin.zip
+    BUILD_IN_SOURCE 1
+
+    CONFIGURE_COMMAND ""
+    BUILD_COMMAND mt -nologo -manifest "${CMAKE_SOURCE_DIR}\\patch.exe.manifest" -outputresource:bin\\patch.exe
+    INSTALL_COMMAND cmake -E copy <SOURCE_DIR>/bin/patch.exe <INSTALL_DIR>/
+)
+
+ExternalProject_Add(
     Chipmunk
     URL http://chipmunk-physics.net/release/Chipmunk-6.x/Chipmunk-6.2.1.tgz
     URL_HASH MD5=1cc6ff6a1f1cfcc6e167841fb24bf3c6
@@ -48,4 +58,10 @@ ExternalProject_Add(
           COMMAND cd vsprojects && msbuild protoc.vcxproj /p:Configuration=${CONFIG}
 
     INSTALL_COMMAND cd vsprojects && call extract_includes.bat
+)
+add_custom_target(clean_keep_downloads
+    COMMAND cmake -E remove_directory externals/Build
+    COMMAND cmake -E remove_directory externals/Install
+    COMMAND cmake -E remove_directory externals/Source
+    COMMAND cmake -E remove_directory externals/tmp
 )

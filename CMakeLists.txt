@@ -14,6 +14,7 @@ endif()
 ExternalProject_Add(
     patch
     URL http://downloads.sourceforge.net/gnuwin32/patch-2.5.9-7-bin.zip
+    URL_HASH MD5=b9c8b31d62f4b2e4f1887bbb63e8a905
     BUILD_IN_SOURCE 1
 
     CONFIGURE_COMMAND ""

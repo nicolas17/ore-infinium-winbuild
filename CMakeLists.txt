@@ -87,9 +87,9 @@ ExternalProject_Add(
         COMMAND vcupgrade "vsprojects\\protoc.vcproj"
 
     BUILD_COMMAND
-        COMMAND cd vsprojects && msbuild libprotobuf.vcxproj /p:Configuration=${CONFIG}
-        COMMAND cd vsprojects && msbuild libprotoc.vcxproj /p:Configuration=${CONFIG}
-        COMMAND cd vsprojects && msbuild protoc.vcxproj /p:Configuration=${CONFIG}
+        COMMAND cd <SOURCE_DIR>\\vsprojects && msbuild libprotobuf.vcxproj /p:Configuration=${CONFIG}
+        COMMAND cd <SOURCE_DIR>\\vsprojects && msbuild libprotoc.vcxproj /p:Configuration=${CONFIG}
+        COMMAND cd <SOURCE_DIR>\\vsprojects && msbuild protoc.vcxproj /p:Configuration=${CONFIG}
 
     INSTALL_COMMAND cd vsprojects && call extract_includes.bat
 )

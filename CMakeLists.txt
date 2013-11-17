@@ -3,7 +3,7 @@ project(ore-infinium-deps C)
 
 include(ExternalProject)
 
-set_property(DIRECTORY PROPERTY EP_BASE "externals")
+set_property(DIRECTORY PROPERTY EP_BASE ${CMAKE_CURRENT_BINARY_DIR})
 
 if(NOT "${CMAKE_C_COMPILER_ID}" STREQUAL "MSVC")
     message(FATAL_ERROR "Currently only MSVC is supported here")
@@ -123,10 +123,12 @@ ExternalProject_Add(
 # (still imperfect)
 
 add_custom_target(clean_keep_downloads
-    COMMAND cmake -E rename externals/Download bkp-Download
-    COMMAND cmake -E rename externals/Source/ore-infinium bkp-ore-infinium
-    COMMAND cmake -E remove_directory externals
-    COMMAND cmake -E make_directory externals/Source
-    COMMAND cmake -E rename bkp-Download externals/Download
-    COMMAND cmake -E rename bkp-ore-infinium externals/Source/ore-infinium
+    COMMAND cmake -E rename Source/ore-infinium bkp-ore-infinium
+    COMMAND cmake -E remove_directory Build
+    COMMAND cmake -E remove_directory Source
+    COMMAND cmake -E remove_directory Install
+    COMMAND cmake -E remove_directory Stamp
+    COMMAND cmake -E remove_directory tmp
+    COMMAND cmake -E make_directory Source
+    COMMAND cmake -E rename bkp-ore-infinium Source/ore-infinium
 )

@@ -14,6 +14,7 @@ include(ext_chipmunk.cmake)
 include(ext_yamlcpp.cmake)
 include(ext_enet.cmake)
 include(ext_protobuf.cmake)
+include(ext_qt5.cmake)
 include(ext_oreinfinium.cmake)
 
 # Custom target to clean built files but not downloaded tarballs

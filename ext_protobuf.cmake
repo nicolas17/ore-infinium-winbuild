@@ -30,3 +30,6 @@ ExternalProject_Add(
 )
 
 add_dependencies(Protobuf patch)
+
+ExternalProject_Get_Property(Protobuf SOURCE_DIR)
+set(PROTOBUF_SRC ${SOURCE_DIR})

@@ -9,3 +9,6 @@ ExternalProject_Add(
         -DCMAKE_INSTALL_PREFIX=<INSTALL_DIR>
         -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE}
 )
+
+ExternalProject_Get_Property(Chipmunk INSTALL_DIR)
+set(CHIPMUNK_PREFIX ${INSTALL_DIR})

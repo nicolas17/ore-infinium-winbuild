@@ -1,12 +1,6 @@
 # Ore Infinium!
-ExternalProject_Get_Property(Chipmunk INSTALL_DIR)
-set(CHIPMUNK_PREFIX ${INSTALL_DIR})
-ExternalProject_Get_Property(yaml-cpp INSTALL_DIR)
-set(YAMLCPP_PREFIX ${INSTALL_DIR})
-ExternalProject_Get_Property(enet INSTALL_DIR)
-set(ENET_PREFIX ${INSTALL_DIR})
-ExternalProject_Get_Property(Protobuf SOURCE_DIR)
-set(PROTOBUF_SRC ${SOURCE_DIR})
+
+# The *_PREFIX variables are set in each ext_*.cmake file.
 
 ExternalProject_Add(
     ore-infinium

@@ -8,3 +8,6 @@ ExternalProject_Add(
         -DCMAKE_INSTALL_PREFIX=<INSTALL_DIR>
         -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE}
 )
+
+ExternalProject_Get_Property(yaml-cpp INSTALL_DIR)
+set(YAMLCPP_PREFIX ${INSTALL_DIR})

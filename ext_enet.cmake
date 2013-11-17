@@ -13,3 +13,6 @@ ExternalProject_Add(
         COMMAND cmake -E copy <SOURCE_DIR>/enet.lib <INSTALL_DIR>/lib
         COMMAND cmake -E copy_directory <SOURCE_DIR>/include <INSTALL_DIR>/include
 )
+
+ExternalProject_Get_Property(enet INSTALL_DIR)
+set(ENET_PREFIX ${INSTALL_DIR})

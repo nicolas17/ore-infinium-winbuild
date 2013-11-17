@@ -123,8 +123,10 @@ ExternalProject_Add(
 # (still imperfect)
 
 add_custom_target(clean_keep_downloads
-    COMMAND cmake -E remove_directory externals/Build
-    COMMAND cmake -E remove_directory externals/Install
-    COMMAND cmake -E remove_directory externals/Source
-    COMMAND cmake -E remove_directory externals/tmp
+    COMMAND cmake -E rename externals/Download bkp-Download
+    COMMAND cmake -E rename externals/Source/ore-infinium bkp-ore-infinium
+    COMMAND cmake -E remove_directory externals
+    COMMAND cmake -E make_directory externals/Source
+    COMMAND cmake -E rename bkp-Download externals/Download
+    COMMAND cmake -E rename bkp-ore-infinium externals/Source/ore-infinium
 )

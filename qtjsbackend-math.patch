@@ -1,0 +1,57 @@
+diff --git a/src/3rdparty/v8/src/platform.h b/src/3rdparty/v8/src/platform.h
+index f3ab08d..73c4f68 100644
+--- a/src/3rdparty/v8/src/platform.h
++++ b/src/3rdparty/v8/src/platform.h
+@@ -71,6 +71,7 @@ int signbit(double x);
+ 
+ int strncasecmp(const char* s1, const char* s2, int n);
+ 
++#if _MSC_VER < 1800
+ inline int lrint(double flt) {
+   int intgr;
+ #if defined(V8_TARGET_ARCH_IA32)
+@@ -87,6 +88,7 @@ inline int lrint(double flt) {
+ #endif
+   return intgr;
+ }
++#endif
+ 
+ 
+ #endif  // _MSC_VER
+diff --git a/src/3rdparty/v8/src/win32-math.cc b/src/3rdparty/v8/src/win32-math.cc
+index 3410872..5b27382 100644
+--- a/src/3rdparty/v8/src/win32-math.cc
++++ b/src/3rdparty/v8/src/win32-math.cc
+@@ -50,6 +50,7 @@ int isfinite(double x) {
+ 
+ }  // namespace v8
+ 
++#if _MSC_VER < 1800
+ 
+ // Test for a NaN (not a number) value - usually defined in math.h
+ int isnan(double x) {
+@@ -103,4 +104,5 @@ int signbit(double x) {
+     return x < 0;
+ }
+ 
++#endif  // _MSC_VER < 1800
+ #endif  // _MSC_VER
+diff --git a/src/3rdparty/v8/src/win32-math.h b/src/3rdparty/v8/src/win32-math.h
+index 6875999..a125234 100644
+--- a/src/3rdparty/v8/src/win32-math.h
++++ b/src/3rdparty/v8/src/win32-math.h
+@@ -37,6 +37,7 @@
+ #error Wrong environment, expected MSVC.
+ #endif  // _MSC_VER
+ 
++#if _MSC_VER < 1800
+ enum {
+   FP_NAN,
+   FP_INFINITE,
+@@ -57,5 +58,6 @@ int isless(double x, double y);
+ int isgreater(double x, double y);
+ int fpclassify(double x);
+ int signbit(double x);
++#endif
+ 
+ #endif  // V8_WIN32_MATH_H_

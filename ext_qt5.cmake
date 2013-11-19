@@ -20,3 +20,28 @@ ExternalProject_Add(
     BUILD_COMMAND nmake
     INSTALL_COMMAND nmake install
 )
+
+ExternalProject_Get_Property(qtbase INSTALL_DIR)
+set(QT_PREFIX ${INSTALL_DIR})
+
+ExternalProject_Add(
+    qtjsbackend
+    URL http://download.qt-project.org/official_releases/qt/5.1/5.1.1/submodules/qtjsbackend-opensource-src-5.1.1.zip
+    URL_HASH SHA1=7673782ee338fafb0554a88a40f5e701ca67b443
+
+    PATCH_COMMAND ${PATCH_PROGRAM} -p1 < ${CMAKE_SOURCE_DIR}/qtjsbackend-math.patch
+    CONFIGURE_COMMAND ${QT_PREFIX}\\bin\\qmake <SOURCE_DIR>
+    BUILD_COMMAND nmake
+    INSTALL_COMMAND nmake install
+    DEPENDS qtbase patch
+)
+
+ExternalProject_Add(
+    qtdeclarative
+    URL http://download.qt-project.org/official_releases/qt/5.1/5.1.1/submodules/qtdeclarative-opensource-src-5.1.1.zip
+    URL_HASH SHA1=1b6d569d0077a2cc0f0e724e097112adfe54e331
+    CONFIGURE_COMMAND ${QT_PREFIX}\\bin\\qmake <SOURCE_DIR>
+    BUILD_COMMAND nmake
+    INSTALL_COMMAND nmake install
+    DEPENDS qtjsbackend
+)

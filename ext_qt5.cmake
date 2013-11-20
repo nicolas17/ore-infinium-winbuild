@@ -8,6 +8,8 @@ endif()
 
 # The .tar.gz file is missing configure.exe, so we have to use the .zip,
 # which is unfortunate since the .tar.gz is smaller.
+# Other modules don't have this problem, since they don't have nor need
+# a configure.exe.
 
 ExternalProject_Add(
     qtbase
@@ -26,8 +28,8 @@ set(QT_PREFIX ${INSTALL_DIR})
 
 ExternalProject_Add(
     qtjsbackend
-    URL http://download.qt-project.org/official_releases/qt/5.1/5.1.1/submodules/qtjsbackend-opensource-src-5.1.1.zip
-    URL_HASH SHA1=7673782ee338fafb0554a88a40f5e701ca67b443
+    URL http://download.qt-project.org/official_releases/qt/5.1/5.1.1/submodules/qtjsbackend-opensource-src-5.1.1.tar.gz
+    URL_HASH SHA1=5723e3c3e563b6ca8f3a6c52d5c313df386384b3
 
     PATCH_COMMAND ${PATCH_PROGRAM} -p1 < ${CMAKE_SOURCE_DIR}/qtjsbackend-math.patch
     CONFIGURE_COMMAND ${QT_PREFIX}\\bin\\qmake <SOURCE_DIR>
@@ -38,8 +40,8 @@ ExternalProject_Add(
 
 ExternalProject_Add(
     qtdeclarative
-    URL http://download.qt-project.org/official_releases/qt/5.1/5.1.1/submodules/qtdeclarative-opensource-src-5.1.1.zip
-    URL_HASH SHA1=1b6d569d0077a2cc0f0e724e097112adfe54e331
+    URL http://download.qt-project.org/official_releases/qt/5.1/5.1.1/submodules/qtdeclarative-opensource-src-5.1.1.tar.gz
+    URL_HASH SHA1=b47a6fefea577a43aca8626cb20528e80b095875
     CONFIGURE_COMMAND ${QT_PREFIX}\\bin\\qmake <SOURCE_DIR>
     BUILD_COMMAND nmake
     INSTALL_COMMAND nmake install

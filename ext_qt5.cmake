@@ -6,6 +6,15 @@ else()
     set(QT_BUILD_MODE release)
 endif()
 
+find_program(JOM_EXECUTABLE jom)
+if(JOM_EXECUTABLE)
+    message(STATUS "Found Jom: ${JOM_EXECUTABLE}")
+    set(NMAKE_TOOL "${JOM_EXECUTABLE}")
+else()
+    message(STATUS "Could NOT find Jom; consider installing it to get multi-core builds")
+    set(NMAKE_TOOL nmake)
+endif()
+
 # The .tar.gz file is missing configure.exe, so we have to use the .zip,
 # which is unfortunate since the .tar.gz is smaller.
 # Other modules don't have this problem, since they don't have nor need
@@ -21,8 +30,8 @@ ExternalProject_Add(
         -${QT_BUILD_MODE}
         -prefix <INSTALL_DIR>
         -nomake tests -nomake examples -opengl desktop
-    BUILD_COMMAND nmake
-    INSTALL_COMMAND nmake install
+    BUILD_COMMAND ${NMAKE_TOOL}
+    INSTALL_COMMAND ${NMAKE_TOOL} install
     DEPENDS patch
 )
 
@@ -34,8 +43,8 @@ ExternalProject_Add(
     URL http://download.qt-project.org/development_releases/qt/5.2/5.2.0-beta1/submodules/qtdeclarative-opensource-src-5.2.0-beta1.tar.gz
     URL_HASH SHA1=c2702eb096cf09bb49e586ced20b876b88644c6d
     CONFIGURE_COMMAND ${QT_PREFIX}\\bin\\qmake <SOURCE_DIR>
-    BUILD_COMMAND nmake
-    INSTALL_COMMAND nmake install
+    BUILD_COMMAND ${NMAKE_TOOL}
+    INSTALL_COMMAND ${NMAKE_TOOL} install
     DEPENDS qtbase
 )
 
@@ -44,7 +53,7 @@ ExternalProject_Add(
     URL http://download.qt-project.org/development_releases/qt/5.2/5.2.0-beta1/submodules/qtquickcontrols-opensource-src-5.2.0-beta1.tar.gz
     URL_HASH SHA1=9335374258abfbed0e692c19cd9deea1a2529a4b
     CONFIGURE_COMMAND ${QT_PREFIX}\\bin\\qmake <SOURCE_DIR>
-    BUILD_COMMAND nmake
-    INSTALL_COMMAND nmake install
+    BUILD_COMMAND ${NMAKE_TOOL}
+    INSTALL_COMMAND ${NMAKE_TOOL} install
     DEPENDS qtdeclarative
 )

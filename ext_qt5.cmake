@@ -13,8 +13,8 @@ endif()
 
 ExternalProject_Add(
     qtbase
-    URL http://download.qt-project.org/official_releases/qt/5.1/5.1.1/submodules/qtbase-opensource-src-5.1.1.zip
-    URL_HASH SHA1=7da0a4e0e319a2a6faeafcba94b091214f186b9f
+    URL http://download.qt-project.org/development_releases/qt/5.2/5.2.0-beta1/submodules/qtbase-opensource-src-5.2.0-beta1.zip
+    URL_HASH SHA1=36de3f52cba8f5a73aad4e63a16c247bada8d6a2
     CONFIGURE_COMMAND "<SOURCE_DIR>\\configure" -opensource -confirm-license
         -${QT_BUILD_MODE}
         -prefix <INSTALL_DIR>
@@ -27,23 +27,11 @@ ExternalProject_Get_Property(qtbase INSTALL_DIR)
 set(QT_PREFIX ${INSTALL_DIR})
 
 ExternalProject_Add(
-    qtjsbackend
-    URL http://download.qt-project.org/official_releases/qt/5.1/5.1.1/submodules/qtjsbackend-opensource-src-5.1.1.tar.gz
-    URL_HASH SHA1=5723e3c3e563b6ca8f3a6c52d5c313df386384b3
-
-    PATCH_COMMAND ${PATCH_PROGRAM} -p1 < ${CMAKE_SOURCE_DIR}/qtjsbackend-math.patch
-    CONFIGURE_COMMAND ${QT_PREFIX}\\bin\\qmake <SOURCE_DIR>
-    BUILD_COMMAND nmake
-    INSTALL_COMMAND nmake install
-    DEPENDS qtbase patch
-)
-
-ExternalProject_Add(
     qtdeclarative
-    URL http://download.qt-project.org/official_releases/qt/5.1/5.1.1/submodules/qtdeclarative-opensource-src-5.1.1.tar.gz
-    URL_HASH SHA1=b47a6fefea577a43aca8626cb20528e80b095875
+    URL http://download.qt-project.org/development_releases/qt/5.2/5.2.0-beta1/submodules/qtdeclarative-opensource-src-5.2.0-beta1.tar.gz
+    URL_HASH SHA1=c2702eb096cf09bb49e586ced20b876b88644c6d
     CONFIGURE_COMMAND ${QT_PREFIX}\\bin\\qmake <SOURCE_DIR>
     BUILD_COMMAND nmake
     INSTALL_COMMAND nmake install
-    DEPENDS qtjsbackend
+    DEPENDS qtbase
 )

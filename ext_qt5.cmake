@@ -15,12 +15,15 @@ ExternalProject_Add(
     qtbase
     URL http://download.qt-project.org/development_releases/qt/5.2/5.2.0-beta1/submodules/qtbase-opensource-src-5.2.0-beta1.zip
     URL_HASH SHA1=36de3f52cba8f5a73aad4e63a16c247bada8d6a2
+
+    PATCH_COMMAND ${PATCH_PROGRAM} -p1 < ${CMAKE_SOURCE_DIR}/qtbase-fix-cmake-config.patch
     CONFIGURE_COMMAND "<SOURCE_DIR>\\configure" -opensource -confirm-license
         -${QT_BUILD_MODE}
         -prefix <INSTALL_DIR>
         -nomake tests -nomake examples -opengl desktop
     BUILD_COMMAND nmake
     INSTALL_COMMAND nmake install
+    DEPENDS patch
 )
 
 ExternalProject_Get_Property(qtbase INSTALL_DIR)

@@ -38,3 +38,13 @@ ExternalProject_Add(
     INSTALL_COMMAND nmake install
     DEPENDS qtbase
 )
+
+ExternalProject_Add(
+    qtquickcontrols
+    URL http://download.qt-project.org/development_releases/qt/5.2/5.2.0-beta1/submodules/qtquickcontrols-opensource-src-5.2.0-beta1.tar.gz
+    URL_HASH SHA1=9335374258abfbed0e692c19cd9deea1a2529a4b
+    CONFIGURE_COMMAND ${QT_PREFIX}\\bin\\qmake <SOURCE_DIR>
+    BUILD_COMMAND nmake
+    INSTALL_COMMAND nmake install
+    DEPENDS qtdeclarative
+)

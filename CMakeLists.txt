@@ -32,3 +32,13 @@ add_custom_target(clean_keep_downloads
     COMMAND cmake -E make_directory Source
     COMMAND cmake -E rename bkp-ore-infinium Source/ore-infinium
 )
+
+# Installer stuff
+list(APPEND CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}")
+find_package(WiX 3.7)
+
+if(WIX_FOUND)
+  WIX_ADD_PRODUCT(oreinfinium
+    SOURCES main.wxs qt.wxs
+    LINK_FLAGS -b qt5=${QT_PREFIX})
+endif()

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Wix xmlns='http://schemas.microsoft.com/wix/2006/wi'>
+  <Product
+    Name='Ore Infinium'
+    Manufacturer='Shaun Reich'
+    Version='0.0.1'
+    Id='*'
+    UpgradeCode='70c1b378-5da5-48ef-b55f-fb55dabfc023'
+    Language='1033'
+    >
+
+  <Package Id='*' Compressed='yes' InstallScope="perMachine"
+    Comments="This is an experimental Windows installer for Ore Infinium"/>
+  <Media Id='1' Cabinet="Ore.cab" EmbedCab="yes" CompressionLevel="none"/>
+  <MajorUpgrade AllowDowngrades="yes"/>
+
+  <Directory Id="TARGETDIR" Name="SourceDir">
+    <Directory Id="ProgramFilesFolder">
+      <Directory Id="OreDir" Name="Ore Infinium">
+        <Directory Id="QtDir"/>
+      </Directory>
+    </Directory>
+    <!--Directory Id="ProgramMenuFolder">
+      <Directory Id="KF5StartMenu" Name="KDE Frameworks"/>
+    </Directory-->
+  </Directory>
+
+  <Feature Id="Complete" Level="1" AllowAdvertise="no">
+    <ComponentRef Id="Qt5Core"/>
+    <ComponentRef Id="Qt5Gui"/>
+    <ComponentRef Id="QtWindowsQPA"/>
+
+  </Feature>
+
+  </Product>
+</Wix>

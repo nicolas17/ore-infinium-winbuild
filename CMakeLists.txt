@@ -9,6 +9,8 @@ if(NOT "${CMAKE_C_COMPILER_ID}" STREQUAL "MSVC")
     message(FATAL_ERROR "Currently only MSVC is supported here")
 endif()
 
+set(PATCHES_DIR ${CMAKE_SOURCE_DIR}/patches)
+
 include(ext_patch.cmake)
 include(ext_chipmunk.cmake)
 include(ext_yamlcpp.cmake)

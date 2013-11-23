@@ -14,3 +14,5 @@ ExternalProject_Add(
 
     DEPENDS Protobuf Chipmunk yaml-cpp enet qtdeclarative
 )
+ExternalProject_Get_Property(ore-infinium INSTALL_DIR)
+set(ORE_PREFIX ${INSTALL_DIR})

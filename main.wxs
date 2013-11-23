@@ -17,6 +17,7 @@
   <Directory Id="TARGETDIR" Name="SourceDir">
     <Directory Id="ProgramFilesFolder">
       <Directory Id="OreDir" Name="Ore Infinium">
+        <!-- Put Qt directly in the ore-infinium dir, not in a subdir -->
         <Directory Id="QtDir"/>
       </Directory>
     </Directory>
@@ -25,7 +26,15 @@
     </Directory-->
   </Directory>
 
+  <DirectoryRef Id="OreDir">
+    <Component Id="MainExe" Guid="8CD92EE5-499A-4FFB-9C8A-26DBAF23CA7E">
+      <File Source="!(bindpath.ore)bin\ore-infinium.exe" KeyPath="yes"/>
+    </Component>
+  </DirectoryRef>
+
   <Feature Id="Complete" Level="1" AllowAdvertise="no">
+    <ComponentRef Id="MainExe"/>
+
     <ComponentRef Id="Qt5Core.dll"/>
     <ComponentRef Id="Qt5Gui.dll"/>
     <ComponentRef Id="qwindows.dll"/>

@@ -40,5 +40,8 @@ find_package(WiX 3.7)
 if(WIX_FOUND)
   WIX_ADD_PRODUCT(oreinfinium
     SOURCES main.wxs qt.wxs
-    LINK_FLAGS -b qt5=${QT_PREFIX})
+    LINK_FLAGS
+      -b qt5=${QT_PREFIX}
+      -b ore=${ORE_PREFIX}
+  )
 endif()

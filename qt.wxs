@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Wix xmlns='http://schemas.microsoft.com/wix/2006/wi'>
+  <!-- Main DLLs -->
   <Fragment>
     <Component Directory="QtDir" Guid="D694AB89-EFDD-49ED-96D8-99CF91B72074">
       <File Source="!(bindpath.qt5)bin\Qt5Core.dll" KeyPath="yes"/>
@@ -15,6 +16,23 @@
       <File Source="!(bindpath.qt5)\bin\Qt5Widgets.dll" KeyPath="yes"/>
     </Component>
   </Fragment>
+  <Fragment>
+    <Component Directory="QtDir" Guid="DFFA700D-23F4-4925-924F-3E4A44E173A9">
+      <File Source="!(bindpath.qt5)\bin\Qt5Network.dll" KeyPath="yes"/>
+    </Component>
+  </Fragment>
+  <Fragment>
+    <Component Directory="QtDir" Guid="DBA08EBD-799F-453A-8343-823196443DCF">
+      <File Source="!(bindpath.qt5)\bin\Qt5Quick.dll" KeyPath="yes"/>
+    </Component>
+  </Fragment>
+  <Fragment>
+    <Component Directory="QtDir" Guid="1FA8002A-3F42-492E-BB96-A6D797E51428">
+      <File Source="!(bindpath.qt5)\bin\Qt5Qml.dll" KeyPath="yes"/>
+    </Component>
+  </Fragment>
+
+  <!-- QPA -->
   <Fragment>
     <DirectoryRef Id="QtDir">
       <Directory Id="QtPluginsDir" Name="plugins">

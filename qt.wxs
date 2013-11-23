@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Wix xmlns='http://schemas.microsoft.com/wix/2006/wi'>
   <Fragment>
-    <Component Directory="QtDir" Guid="A1746964-1939-4956-A597-BFF4CBA1EFBA">
+    <Component Directory="QtDir" Guid="D694AB89-EFDD-49ED-96D8-99CF91B72074">
       <File Source="!(bindpath.qt5)bin\Qt5Core.dll" KeyPath="yes"/>
     </Component>
   </Fragment>
   <Fragment>
-    <Component Directory="QtDir" Guid="57CC53C0-3B75-4A52-82B6-CF67076C956F">
+    <Component Directory="QtDir" Guid="BD47513C-50E3-42B9-B9C5-2D6D159D5D03">
       <File Source="!(bindpath.qt5)bin\Qt5Gui.dll" KeyPath="yes"/>
     </Component>
   </Fragment>
   <Fragment>
-    <Component Directory="QtDir" Guid="58265DF9-A9ED-4C16-B6B9-F1600FA072CA">
+    <Component Directory="QtDir" Guid="65DEAFD4-7CCD-4431-8874-FB1C3D1E4E02">
       <File Source="!(bindpath.qt5)\bin\Qt5Widgets.dll" KeyPath="yes"/>
     </Component>
   </Fragment>
@@ -23,7 +23,7 @@
     </DirectoryRef>
   </Fragment>
   <Fragment>
-    <Component Directory="QtPlatformPluginsDir" Guid="0801502B-1044-4E3E-88B0-04232A1F5EFD">
+    <Component Directory="QtPlatformPluginsDir" Guid="3F18AB06-79DC-447A-A85A-7154636C9182">
       <File Source="!(bindpath.qt5)plugins\platforms\qwindows.dll" KeyPath="yes"/>
     </Component>
   </Fragment>

@@ -37,6 +37,10 @@
 
     <ComponentRef Id="Qt5Core.dll"/>
     <ComponentRef Id="Qt5Gui.dll"/>
+    <ComponentRef Id="Qt5Quick.dll"/>
+    <ComponentRef Id="Qt5Qml.dll"/>
+    <ComponentRef Id="Qt5Network.dll"/> <!-- required by Quick -->
+
     <ComponentRef Id="qwindows.dll"/>
 
   </Feature>

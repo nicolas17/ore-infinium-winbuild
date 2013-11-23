@@ -26,9 +26,9 @@
   </Directory>
 
   <Feature Id="Complete" Level="1" AllowAdvertise="no">
-    <ComponentRef Id="Qt5Core"/>
-    <ComponentRef Id="Qt5Gui"/>
-    <ComponentRef Id="QtWindowsQPA"/>
+    <ComponentRef Id="Qt5Core.dll"/>
+    <ComponentRef Id="Qt5Gui.dll"/>
+    <ComponentRef Id="qwindows.dll"/>
 
   </Feature>
 

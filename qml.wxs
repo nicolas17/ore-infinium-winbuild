@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Wix xmlns='http://schemas.microsoft.com/wix/2006/wi'>
+  <Fragment>
+    <DirectoryRef Id="OreDir">
+      <Directory Id="ClientDir" Name="client">
+        <Directory Id="GuiDir" Name="gui">
+          <Directory Id="ClientAssetsDir" Name="assets">
+            <Directory Id="QmlAssetsDir" Name="qml"/>
+          </Directory>
+        </Directory>
+      </Directory>
+    </DirectoryRef>
+  </Fragment>
+
+  <!-- QML files -->
+  <Fragment>
+    <Component Directory="QmlAssetsDir" Guid="07037091-311B-4CD2-AFEB-4DBAB48EA048">
+      <File Source="!(bindpath.ore)client/gui/assets/qml/main.qml" KeyPath="yes"/>
+    </Component>
+  </Fragment>
+</Wix>

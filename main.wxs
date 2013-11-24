@@ -45,6 +45,8 @@
 
     <ComponentRef Id="qwindows.dll"/>
 
+    <ComponentRef Id="main.qml"/>
+
   </Feature>
 
   </Product>

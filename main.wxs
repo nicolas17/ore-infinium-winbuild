@@ -17,8 +17,10 @@
   <Directory Id="TARGETDIR" Name="SourceDir">
     <Directory Id="ProgramFilesFolder">
       <Directory Id="OreDir" Name="Ore Infinium">
-        <!-- Put Qt directly in the ore-infinium dir, not in a subdir -->
-        <Directory Id="QtDir"/>
+        <Directory Id="BinDir" Name="bin">
+          <!-- Put Qt directly in the bin dir -->
+          <Directory Id="QtDir"/>
+        </Directory>
       </Directory>
     </Directory>
     <!--Directory Id="ProgramMenuFolder">
@@ -26,7 +28,7 @@
     </Directory-->
   </Directory>
 
-  <DirectoryRef Id="OreDir">
+  <DirectoryRef Id="BinDir">
     <Component Id="MainExe" Guid="8CD92EE5-499A-4FFB-9C8A-26DBAF23CA7E">
       <File Source="!(bindpath.ore)bin\ore-infinium.exe" KeyPath="yes"/>
     </Component>

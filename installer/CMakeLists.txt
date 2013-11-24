@@ -8,6 +8,7 @@ if(WIX_FOUND)
     LINK_FLAGS
       -b qt5=${QT_PREFIX}
       -b ore=${ORE_PREFIX}
+      -b source=${CMAKE_SOURCE_DIR}
     DEPENDS ore-infinium qtdeclarative
   )
 endif()

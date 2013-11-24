@@ -32,11 +32,15 @@
     <Component Id="MainExe" Guid="8CD92EE5-499A-4FFB-9C8A-26DBAF23CA7E">
       <File Source="!(bindpath.ore)bin\ore-infinium.exe" KeyPath="yes"/>
     </Component>
+    <Component Id="QtConf" Guid="E75A2D01-9287-4AA2-B1DE-FE2A296A0E72">
+      <File Source="!(bindpath.source)\qt.conf" KeyPath="yes"/>
+    </Component>
   </DirectoryRef>
 
   <Feature Id="Complete" Level="1" AllowAdvertise="no">
     <ComponentRef Id="MainExe"/>
 
+    <ComponentRef Id="QtConf"/>
     <ComponentRef Id="Qt5Core.dll"/>
     <ComponentRef Id="Qt5Gui.dll"/>
     <ComponentRef Id="Qt5Quick.dll"/>

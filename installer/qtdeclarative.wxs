@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Wix xmlns='http://schemas.microsoft.com/wix/2006/wi'>
+  <Fragment>
+    <Component Directory="QtDir" Guid="DBA08EBD-799F-453A-8343-823196443DCF">
+      <File Source="!(bindpath.qt5)\bin\Qt5Quick.dll" KeyPath="yes"/>
+    </Component>
+  </Fragment>
+  <Fragment>
+    <Component Directory="QtDir" Guid="1FA8002A-3F42-492E-BB96-A6D797E51428">
+      <File Source="!(bindpath.qt5)\bin\Qt5Qml.dll" KeyPath="yes"/>
+    </Component>
+  </Fragment>
+</Wix>

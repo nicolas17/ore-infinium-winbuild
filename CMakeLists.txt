@@ -13,6 +13,7 @@ set(PATCHES_DIR ${CMAKE_SOURCE_DIR}/patches)
 
 include(ext_patch.cmake)
 include(ext_enet.cmake)
+include(ext_glm.cmake)
 include(ext_protobuf.cmake)
 include(ext_qt5.cmake)
 include(ext_oreinfinium.cmake)

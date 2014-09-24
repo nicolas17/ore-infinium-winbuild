@@ -22,8 +22,8 @@ endif()
 
 ExternalProject_Add(
     qtbase
-    URL http://download.qt-project.org/development_releases/qt/5.2/5.2.0-rc1/submodules/qtbase-opensource-src-5.2.0-rc1.zip
-    URL_HASH SHA1=6c5838986002c28eef86f8b70c727867a8725f45
+    URL http://download.qt-project.org/official_releases/qt/5.3/5.3.2/submodules/qtbase-opensource-src-5.3.2.zip
+    URL_HASH SHA1=cec5321a2148918e45efb08415f4a07b76cd4362
 
     CONFIGURE_COMMAND "<SOURCE_DIR>\\configure" -opensource -confirm-license
         -${QT_BUILD_MODE}
@@ -38,8 +38,8 @@ set(QT_PREFIX ${INSTALL_DIR})
 
 ExternalProject_Add(
     qtdeclarative
-    URL http://download.qt-project.org/development_releases/qt/5.2/5.2.0-rc1/submodules/qtdeclarative-opensource-src-5.2.0-rc1.tar.gz
-    URL_HASH SHA1=e8d031f286a771c2f8094ac499425dfec2843c3d
+    URL http://download.qt-project.org/official_releases/qt/5.3/5.3.2/submodules/qtdeclarative-opensource-src-5.3.2.tar.gz
+    URL_HASH SHA1=24ebd632e7b1fe9c6523e9e7f37399757aa9c270
     CONFIGURE_COMMAND ${QT_PREFIX}\\bin\\qmake <SOURCE_DIR>
     BUILD_COMMAND ${NMAKE_TOOL}
     INSTALL_COMMAND ${NMAKE_TOOL} install
@@ -48,8 +48,8 @@ ExternalProject_Add(
 
 ExternalProject_Add(
     qtquickcontrols
-    URL http://download.qt-project.org/development_releases/qt/5.2/5.2.0-rc1/submodules/qtquickcontrols-opensource-src-5.2.0-rc1.tar.gz
-    URL_HASH SHA1=e7a2196fde96ce255bfd5a14e21117396ff73f62
+    URL http://download.qt-project.org/official_releases/qt/5.3/5.3.2/submodules/qtquickcontrols-opensource-src-5.3.2.tar.gz
+    URL_HASH SHA1=81f6c97b980692b6b51d541eb6534f4f92c90d2a
     CONFIGURE_COMMAND ${QT_PREFIX}\\bin\\qmake <SOURCE_DIR>
     BUILD_COMMAND ${NMAKE_TOOL}
     INSTALL_COMMAND ${NMAKE_TOOL} install
